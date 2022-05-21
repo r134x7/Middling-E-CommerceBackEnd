@@ -8,16 +8,16 @@ const ProductTag = require('./ProductTag');
 
 // Products belongsTo Category
 Product.belongsTo(Category, {
-  foreignKey: 'category_id',
+  foreignKey: 'category_id', // foreign key comes from Product when .belongsTo
 })
 
 // Categories have many Products
 Category.hasMany(Product, {
-  foreignKey: 'category_id',
+  foreignKey: 'category_id', // foreign key comes from Product when .hasMany
 })
 
 // Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, {
+Product.belongsToMany(Tag, { // many to many relationship, ProductTag used as a junction table containing the foreign keys
   through: {
     model: ProductTag,
     unique: false
@@ -25,7 +25,7 @@ Product.belongsToMany(Tag, {
 })
 
 // Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {
+Tag.belongsToMany(Product, { // many to many relationship, ProductTag used as a junction table containing the foreign keys
   through: {
     model: ProductTag,
     unique: false

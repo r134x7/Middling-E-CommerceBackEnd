@@ -4,9 +4,17 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // The `/api/products` endpoint
 
 // get all products
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
+  try {
+    const productData = await Product.findAll({
+      include: [{ model: Category }, { model: Tag }], // to join Category and Tag to Product
+    })
+    res.status(200).json(productData); 
+  } catch (err) {
+    res.status(500).json(err);
+  } // unknown tag error occurred because I seed data didn't work correctly the first time.
 });
 
 // get one product
