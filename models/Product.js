@@ -21,7 +21,7 @@ Product.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2), // (10,2) first number deals with the precision of the number and the second deals with the amount of decimal places.
       allowNull: false,
       validate: {
         isDecimal: true,
