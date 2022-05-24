@@ -17,7 +17,7 @@
 
   # Usage
   
-  ![alt text](assets/images/screenshot.png)
+  
 
   # Tests
   
